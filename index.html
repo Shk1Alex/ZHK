@@ -19,11 +19,11 @@
         <section id="tab1" class="tab-content active">
             <form id="input-form">
                 <div class="form-group">
-                    <label for="hot-water">ГОРЯЧЕЕ В/С куб.м</label>
+                    <label for="hot-water">ГОРЯЧЕЕ В/С (куб.м)</label>
                     <input type="number" id="hot-water" step="0.01" required>
                 </div>
                 <div class="form-group">
-                    <label for="cold-water">ХОЛОДНОЕ В/С куб.м</label>
+                    <label for="cold-water">ХОЛОДНОЕ В/С (куб.м)</label>
                     <input type="number" id="cold-water" step="0.01" required>
                 </div>
                 <div class="form-group">
@@ -39,7 +39,7 @@
                 </ul>
             </div>
             <div class="calculation">
-                <h2>Итоговая сумма к оплате (руб): <span id="amount">0</span></h2>
+                <h2>Итоговая сумма на основе последних показаний (руб): <span id="amount">0</span></h2>
             </div>
         </section>
 
@@ -53,33 +53,45 @@
         </section>
 
         <!-- 3 вкладка: тарифы -->
-        <section id="tab3" class="tab-content" style="display:none;">
-            <h2>Настройка тарифов</h2>
-            <form id="tariff-form">
-                <div class="form-group">
-                    <label for="cold-water-rate">ХОЛОДНОЕ В/С (подача) [руб/куб.м]</label>
-                    <input type="number" id="cold-water-rate" step="0.01" required>
-                </div>
-                <div class="form-group">
-                    <label for="hot-water-rate">ГОРЯЧЕЕ В/С (подача) [руб/куб.м]</label>
-                    <input type="number" id="hot-water-rate" step="0.01" required>
-                </div>
-                <div class="form-group">
-                    <label for="electricity-rate">ЭЛЕКТРОЭНЕРГИЯ [руб/кВтч]</label>
-                    <input type="number" id="electricity-rate" step="0.01" required>
-                </div>
-                <div class="form-group">
-                    <label for="service-charge">ОБСЛУЖИВАНИЕ ДОМА [руб/мес]</label>
-                    <input type="number" id="service-charge" step="0.01" required>
-                </div>
-                <p>Прочие тарифы: 
-                    Интернет = 750 руб/мес, 
-                    Отопление = 0 (не учитываем), 
-                    Горячее В/С (энергия) = ГВС (подача) * 133(средняя стоимость за год), 
-                    Водоотведение = (ХВС (подача) + ГВС (подача)) * 35.65</p>
-                <button type="submit">Сохранить тарифы</button>
-            </form>
-        </section>
+<!-- внутри секции тарифов (tab3) -->
+<section id="tab3" class="tab-content" style="display:none;">
+    <h2>Настройка тарифов</h2>
+    <form id="tariff-form">
+        <div class="form-group">
+            <label for="cold-water-rate">ХОЛОДНОЕ В/С (подача) [руб/куб.м]</label>
+            <input type="number" id="cold-water-rate" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="hot-water-rate">ГОРЯЧЕЕ В/С (подача) [руб/куб.м]</label>
+            <input type="number" id="hot-water-rate" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="hot-water-energy">ГОРЯЧЕЕ В/С (энергия) [руб/куб.м]</label>
+            <input type="number" id="hot-water-energy" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="electricity-rate">ЭЛЕКТРОЭНЕРГИЯ [руб/кВтч]</label>
+            <input type="number" id="electricity-rate" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="service-charge">ОБСЛУЖИВАНИЕ ДОМА [руб/мес]</label>
+            <input type="number" id="service-charge" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="internet">ИНТЕРНЕТ [руб/мес]</label>
+            <input type="number" id="internet" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="heating">ОТОПЛЕНИЕ [руб/мес]</label>
+            <input type="number" id="heating" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="drainage-rate">ВОДООТВЕДЕНИЕ [руб/куб.м]</label>
+            <input type="number" id="drainage-rate" step="0.01" required>
+        </div>
+        <button type="submit">Сохранить тарифы</button>
+    </form>
+</section>
     </main>
     <script src="scripts/main.js"></script>
     <script src="scripts/tabs.js"></script>

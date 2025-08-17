@@ -112,15 +112,15 @@ document.getElementById('delete-last').addEventListener('click', function() {
 document.getElementById('tariff-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const tariffs = {
-    coldWater: parseFloat(document.getElementById('cold-water-rate').value),
-    hotWater: parseFloat(document.getElementById('hot-water-rate').value),
-    electricity: parseFloat(document.getElementById('electricity-rate').value),
-    service: parseFloat(document.getElementById('service-charge').value),
-    internet: 750,
-    heating: 0,
-    hotWaterEnergy: parseFloat(document.getElementById('hot-water-energy').value),
-    drainage: parseFloat(document.getElementById('drainage-rate').value)
-};
+        coldWater: parseFloat(document.getElementById('cold-water-rate').value),
+        hotWater: parseFloat(document.getElementById('hot-water-rate').value),
+        hotWaterEnergy: parseFloat(document.getElementById('hot-water-energy').value),
+        electricity: parseFloat(document.getElementById('electricity-rate').value),
+        service: parseFloat(document.getElementById('service-charge').value),
+        internet: parseFloat(document.getElementById('internet').value),
+        heating: parseFloat(document.getElementById('heating').value),
+        drainage: parseFloat(document.getElementById('drainage-rate').value)
+    };
     saveTariffs(tariffs);
     calculateAmount();
     alert('Тарифы сохранены!');
@@ -132,8 +132,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const tariffs = getTariffs();
     document.getElementById('cold-water-rate').value = tariffs.coldWater;
     document.getElementById('hot-water-rate').value = tariffs.hotWater;
+    document.getElementById('hot-water-energy').value = tariffs.hotWaterEnergy;
     document.getElementById('electricity-rate').value = tariffs.electricity;
     document.getElementById('service-charge').value = tariffs.service;
+    document.getElementById('internet').value = tariffs.internet;
+    document.getElementById('heating').value = tariffs.heating;
+    document.getElementById('drainage-rate').value = tariffs.drainage;
 
     updateLastReadings();
     updateHistory();
