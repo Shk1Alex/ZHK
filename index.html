@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZKH</title>
+    <link rel="stylesheet" href="styles/dark-theme.css">
+</head>
+<body>
+    <header>
+        <h1>Учёт коммунальных платежей</h1>
+    </header>
+    <nav class="tabs">
+        <button class="tab-button active" data-tab="tab1">Ввод показаний</button>
+        <button class="tab-button" data-tab="tab2">История показаний</button>
+        <button class="tab-button" data-tab="tab3">Тарифы</button>
+    </nav>
+    <main>
+        <section id="tab1" class="tab-content active">
+            <form id="input-form">
+                <div class="form-group">
+                    <label for="hot-water">ГОРЯЧЕЕ В/С куб.м</label>
+                    <input type="number" id="hot-water" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="cold-water">ХОЛОДНОЕ В/С куб.м</label>
+                    <input type="number" id="cold-water" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="electricity">ЭЛЕКТРОЭНЕРГИЯ (кВтч)</label>
+                    <input type="number" id="electricity" step="0.01" required>
+                </div>
+                <button type="submit">Сохранить показания</button>
+            </form>
+            <div class="display-data">
+                <h2>Последние показания</h2>
+                <ul id="readings-list">
+                    <li>Нет данных</li>
+                </ul>
+            </div>
+            <div class="calculation">
+                <h2>Итоговая сумма к оплате (руб): <span id="amount">0</span></h2>
+            </div>
+        </section>
+
+        <!-- 2 вкладка: история -->
+        <section id="tab2" class="tab-content" style="display:none;">
+            <h2>История введённых показаний</h2>
+            <ul id="history-list">
+                <li>Нет данных</li>
+            </ul>
+            <button id="delete-last">Удалить последнее показание</button>
+        </section>
+
+        <!-- 3 вкладка: тарифы -->
+        <section id="tab3" class="tab-content" style="display:none;">
+            <h2>Настройка тарифов</h2>
+            <form id="tariff-form">
+                <div class="form-group">
+                    <label for="cold-water-rate">ХОЛОДНОЕ В/С (подача) [руб/куб.м]</label>
+                    <input type="number" id="cold-water-rate" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="hot-water-rate">ГОРЯЧЕЕ В/С (подача) [руб/куб.м]</label>
+                    <input type="number" id="hot-water-rate" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="electricity-rate">ЭЛЕКТРОЭНЕРГИЯ [руб/кВтч]</label>
+                    <input type="number" id="electricity-rate" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="service-charge">ОБСЛУЖИВАНИЕ ДОМА [руб/мес]</label>
+                    <input type="number" id="service-charge" step="0.01" required>
+                </div>
+                <p>Прочие тарифы: 
+                    Интернет = 750 руб/мес, 
+                    Отопление = 0 (не учитываем), 
+                    Горячее В/С (энергия) = ГВС (подача) * 133(средняя стоимость за год), 
+                    Водоотведение = (ХВС (подача) + ГВС (подача)) * 35.65</p>
+                <button type="submit">Сохранить тарифы</button>
+            </form>
+        </section>
+    </main>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/tabs.js"></script>
+</body>
+</html>
